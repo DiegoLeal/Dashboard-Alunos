@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 const initialState = {
     botaoClicado: false,
 };
@@ -5,10 +6,11 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
         case 'BOTAO_CLICADO': {
-            newState = { ...state };
+            const newState = { ...state };
             newState.botaoClicado = !newState.botaoClicado;
             return newState;
         }
+
         default: {
             return state;
         }

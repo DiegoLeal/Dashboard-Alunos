@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 import React from 'react';
 import { Container } from '../../styles/GloblalStyles';
 
