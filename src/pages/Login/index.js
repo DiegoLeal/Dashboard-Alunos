@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import * as actionsClicaBotao from "../../store/modules/actions";
 import { Container } from "../../styles/GloblalStyles";
 import { Title } from "./styled";
 
@@ -10,9 +11,7 @@ export default function Login() {
   function handleClick(e) {
       e.preventDefault();
 
-      dispatch({
-        type: 'BOTAO_CLICADO',
-    });
+      dispatch(actionsClicaBotao.clicaBotao);
   }
   
     return (
@@ -20,6 +19,9 @@ export default function Login() {
         <Title>
             Login
         </Title>
+        <button type="button" onclick={handleClick}>
+          enviar
+        </button>  
     </Container>
     );
 }
