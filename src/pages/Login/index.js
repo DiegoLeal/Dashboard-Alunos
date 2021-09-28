@@ -1,17 +1,20 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Container } from "../../styles/GloblalStyles";
 import { Title } from "./styled";
-//import axios from "../../services/axios";
+
 
 export default function Login() {
-   /* React.useEffect(() => {
-        async function getData() {
-            const response = await axios.get('/alunos');
-            const { data } = response;
-        }
+  const dispatch = useDispatch();
 
-        getData();
-    }, []);*/
+  function handleClick(e) {
+      e.preventDefault();
+
+      dispatch({
+        type: 'BOTAO_CLICADO',
+    });
+  }
+  
     return (
     <Container>
         <Title>

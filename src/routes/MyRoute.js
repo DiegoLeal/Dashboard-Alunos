@@ -12,8 +12,7 @@ export default function MyRoute({ Component, isClosed, ...rest }) {
             />    
         );
     }
-
-    // eslint-disable-next-line ract/jsx-props-no-spreading
+   
     return <Route { ...rest} component={Component} />
 }
 
