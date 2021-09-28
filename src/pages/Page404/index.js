@@ -1,10 +1,11 @@
-/* eslint-disable no-unreachable */
 import React from 'react';
-import { Container } from '../../styles/GloblalStyles';
+
+import { Container } from '../../styles/GlobalStyles';
 
 export default function Page404() {
-    return 
+  return (
     <Container>
-        <h1>ERROR404 Page Not Foun</h1>
+      <h1>Essa página não existe</h1>
     </Container>
+  );
 }
