@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaHome, FaSignInAlt, FaUserAlt } from 'react-icons/fa';
+import { FaHome, FaRegUser, FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import { Nav } from './styled';
@@ -10,11 +10,11 @@ export default function Header() {
       <Link to="/">
         <FaHome size={24} />
       </Link>
-      <Link to="/login">
-        <FaUserAlt size={24} />
-      </Link>
       <Link to="/Register">
-        <FaSignInAlt size={24} />
+        <FaRegUser size={24} />
+      </Link>
+      <Link to="/login">
+        <FaUserCircle size={24} />
       </Link>     
     </Nav>
   );
