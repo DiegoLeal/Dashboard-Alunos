@@ -5,9 +5,12 @@ import { isEmail } from 'validator';
 import { Container } from '../../styles/GlobalStyles';
 import *as actions from '../../store/modules/auth/actions';
 import { Form } from './styled';
+import { get } from "lodash";
 
-export default function Login() {
+export default function Login(props) {
   const dispatch = useDispatch();
+
+  const prevPath = get(props, 'location.state.prevPath', '/');
   
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -28,7 +31,7 @@ export default function Login() {
 
     if (formErros) return;  
     
-    dispatch(actions.loginRequest({ email, password }));
+    dispatch(actions.loginRequest({ email, password, prevPath }));
   };
 
   return (
