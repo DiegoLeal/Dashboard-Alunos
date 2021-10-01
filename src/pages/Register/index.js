@@ -8,11 +8,25 @@ import { Container } from "../../styles/GlobalStyles";
 import { Form } from "./styled";
 //import axios from '../../services/axios';
 import history from '../../services/history';
+import Loading from '../../components/Loading';
+import { useSelector } from "react-redux";
 
 export default function Register() {
+  const id = useSelector(state => state.auth.user.id);
+  const nomeStored = useSelector(state => state.auth.user.nome);
+  const emailStored = useSelector(state => state.auth.email);
+
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  React.useEffect(() => {
+    if(!id) return;
+
+    setNome(nomeStored);
+    setEmail(emailStored);
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -35,6 +49,8 @@ export default function Register() {
 
     if (formErros) return;
 
+    setIsLoading(true);
+
     try {
       await axios.post('/users', {
         nome,
@@ -42,16 +58,19 @@ export default function Register() {
         email,
       });
       toast.success('Cadastro efetuado com sucesso');
-      history.pushState('/');
-    } catch (e) {      
-      const erros = get(e, 'response.data.erros', []);
+      setIsLoading(false);
+      history.push('/login');
+    } catch (err) {      
+      const erros = get(err, 'response.data.erros', []);
 
       erros.map(error => toast.error(error));
-    }
+      setIsLoading(false);
+    } 
   }
 
   return (
     <Container>
+      <Loading isLoading={isLoading} />
       <h1>Register</h1>
 
       <Form onSubmit={handleSubmit}>
