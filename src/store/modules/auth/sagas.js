@@ -7,7 +7,7 @@ import history from '../../../services/history';
 
 function* loginRequest({ payload }) {
     try {
-        const response = yield call(axios.post, '/tokens', payload);
+        const response = yield call(axios.post, '/auth/login', payload);
         yield put(actions.loginSuccess({ ...response.data }));
 
         toast.success('Login realizado com sucesso');

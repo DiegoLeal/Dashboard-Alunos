@@ -52,8 +52,7 @@ export default function Register() {
     setIsLoading(true);
 
     try {
-      await axios.post('/users', {
-        nome,
+      await axios.post('/login', {        
         password,
         email,
       });
@@ -84,7 +83,7 @@ export default function Register() {
           />
         </label>
 
-        <label htmlFor="email">
+       {/* <label htmlFor="email">
           E-mail:
           <input
             type="email"
@@ -92,7 +91,7 @@ export default function Register() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Seu e-mail"
           />
-        </label>
+        </label>*/}
 
         <label htmlFor="password">
           Senha:
